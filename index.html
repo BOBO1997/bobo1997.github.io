@@ -6,213 +6,265 @@
 	</head>
 	<body>
 		<header>
-			<h1>BOBO1997的个人网站</h1>
+			<h1>BOBO1997の個人サイト</h1>
 		</header>
 		<div>
-			<h1 align = "center">轮廓</h1>
+			<h1>プロフィール</h1>
+			所属    : 東京大学理学部情報科学科4年<br>
+			Twitter : <a href="http://twitter.com/BOBO_Academia">@BOBO_Academia</a>
 		</div>
 		<div>
-			<link rel="stylesheet"
-			href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/
-			css/font-awesome.min.css">
-			<script language="javascript">
-			  /* Define the Animation class */
-			  function Animation(frames, img_id, slider_id, interval, loop_select_id){
-				this.img_id = img_id;
-				this.slider_id = slider_id;
-				this.loop_select_id = loop_select_id;
-				this.interval = interval;
-				this.current_frame = 0;
-				this.direction = 0;
-				this.timer = null;
-				this.frames = new Array(frames.length);
-
-				for (var i=0; i<frames.length; i++)
-				{
-				 this.frames[i] = new Image();
-				 this.frames[i].src = frames[i];
-				}
-				document.getElementById(this.slider_id).max = this.frames.length - 1;
-				this.set_frame(this.current_frame);
-			  }
-
-			  Animation.prototype.get_loop_state = function(){
-				var button_group = document[this.loop_select_id].state;
-				for (var i = 0; i < button_group.length; i++) {
-					var button = button_group[i];
-					if (button.checked) {
-						return button.value;
-					}
-				}
-				return undefined;
-			  }
-
-			  Animation.prototype.set_frame = function(frame){
-				this.current_frame = frame;
-				document.getElementById(this.img_id).src =
-						this.frames[this.current_frame].src;
-				document.getElementById(this.slider_id).value = this.current_frame;
-			  }
-
-			  Animation.prototype.next_frame = function()
-			  {
-				this.set_frame(Math.min(this.frames.length - 1, this.current_frame + 1));
-			  }
-
-			  Animation.prototype.previous_frame = function()
-			  {
-				this.set_frame(Math.max(0, this.current_frame - 1));
-			  }
-
-			  Animation.prototype.first_frame = function()
-			  {
-				this.set_frame(0);
-			  }
-
-			  Animation.prototype.last_frame = function()
-			  {
-				this.set_frame(this.frames.length - 1);
-			  }
-
-			  Animation.prototype.slower = function()
-			  {
-				this.interval /= 0.7;
-				if(this.direction > 0){this.play_animation();}
-				else if(this.direction < 0){this.reverse_animation();}
-			  }
-
-			  Animation.prototype.faster = function()
-			  {
-				this.interval *= 0.7;
-				if(this.direction > 0){this.play_animation();}
-				else if(this.direction < 0){this.reverse_animation();}
-			  }
-
-			  Animation.prototype.anim_step_forward = function()
-			  {
-				this.current_frame += 1;
-				if(this.current_frame < this.frames.length){
-				  this.set_frame(this.current_frame);
-				}else{
-				  var loop_state = this.get_loop_state();
-				  if(loop_state == "loop"){
-					this.first_frame();
-				  }else if(loop_state == "reflect"){
-					this.last_frame();
-					this.reverse_animation();
-				  }else{
-					this.pause_animation();
-					this.last_frame();
-				  }
-				}
-			  }
-
-			  Animation.prototype.anim_step_reverse = function()
-			  {
-				this.current_frame -= 1;
-				if(this.current_frame >= 0){
-				  this.set_frame(this.current_frame);
-				}else{
-				  var loop_state = this.get_loop_state();
-				  if(loop_state == "loop"){
-					this.last_frame();
-				  }else if(loop_state == "reflect"){
-					this.first_frame();
-					this.play_animation();
-				  }else{
-					this.pause_animation();
-					this.first_frame();
-				  }
-				}
-			  }
-
-			  Animation.prototype.pause_animation = function()
-			  {
-				this.direction = 0;
-				if (this.timer){
-				  clearInterval(this.timer);
-				  this.timer = null;
-				}
-			  }
-
-			  Animation.prototype.play_animation = function()
-			  {
-				this.pause_animation();
-				this.direction = 1;
-				var t = this;
-				if (!this.timer) this.timer = setInterval(function() {
-					t.anim_step_forward();
-				}, this.interval);
-			  }
-
-			  Animation.prototype.reverse_animation = function()
-			  {
-				this.pause_animation();
-				this.direction = -1;
-				var t = this;
-				if (!this.timer) this.timer = setInterval(function() {
-					t.anim_step_reverse();
-				}, this.interval);
-			  }
-			</script>
-
-			<div class="animation" align="center">
-				<img id="_anim_imgef605d8d863940fd8d7b73eb7505201a">
-				<br>
-				<input id="_anim_slideref605d8d863940fd8d7b73eb7505201a" type="range" style="width:350px"
-					   name="points" min="0" max="1" step="1" value="0"
-					   onchange="animef605d8d863940fd8d7b73eb7505201a.set_frame(parseInt(this.value));"></input>
-				<br>
-				<button onclick="animef605d8d863940fd8d7b73eb7505201a.slower()"><i class="fa fa-minus"></i></button>
-				<button onclick="animef605d8d863940fd8d7b73eb7505201a.first_frame()"><i class="fa fa-fast-backward">
-					</i></button>
-				<button onclick="animef605d8d863940fd8d7b73eb7505201a.previous_frame()">
-					<i class="fa fa-step-backward"></i></button>
-				<button onclick="animef605d8d863940fd8d7b73eb7505201a.reverse_animation()">
-					<i class="fa fa-play fa-flip-horizontal"></i></button>
-				<button onclick="animef605d8d863940fd8d7b73eb7505201a.pause_animation()"><i class="fa fa-pause">
-					</i></button>
-				<button onclick="animef605d8d863940fd8d7b73eb7505201a.play_animation()"><i class="fa fa-play"></i>
-					</button>
-				<button onclick="animef605d8d863940fd8d7b73eb7505201a.next_frame()"><i class="fa fa-step-forward">
-					</i></button>
-				<button onclick="animef605d8d863940fd8d7b73eb7505201a.last_frame()"><i class="fa fa-fast-forward">
-					</i></button>
-				<button onclick="animef605d8d863940fd8d7b73eb7505201a.faster()"><i class="fa fa-plus"></i></button>
-			  <form action="#n" name="_anim_loop_selectef605d8d863940fd8d7b73eb7505201a" class="anim_control">
-				<input type="radio" name="state"
-					   value="once" > Once </input>
-				<input type="radio" name="state"
-					   value="loop" checked> Loop </input>
-				<input type="radio" name="state"
-					   value="reflect" > Reflect </input>
-			  </form>
+			<h1>授業日記</h1>
+			<div onclick="obj=document.getElementById('2A').style; obj.display=(obj.display=='none')?'block':'none';">
+				<a style="cursor:pointer;"><h2>2A</h2></a>
 			</div>
+			<div id="2A" style="display:none;clear:both;">
+				可の山を積み上げたので語る気が起きません。
+			</div>
+			<div onclick="obj=document.getElementById('3S').style; obj.display=(obj.display=='none')?'block':'none';">
+				<a style="cursor:pointer;"><h2>3S</h2></a>
+			</div>
+			<div id="3S" style="display:none;clear:both;">
+				準備中です。
+			</div>
+			<div onclick="obj=document.getElementById('3A').style; obj.display=(obj.display=='none')?'block':'none';">
+				<a style="cursor:pointer;"><h2>3A</h2></a>
+			</div>
+			<div id="3A" style="display:none;clear:both;">
+				<div onclick="obj=document.getElementById('CPU実験').style; obj.display=(obj.display=='none')?'block':'none';">
+				<a style = "cursor:pointer;"><h3>CPU実験</h3></a>
+				</div>
+				<div id = "CPU実験" style = "display:none;clear:both;">
+					3Aになると、ついに、"理情の名物"と言われる(？)、あのCPU実験がやってきました。
+					正式名称は、「プロセッサ・コンパイラ実験」といい、その名の通り、プロセッサ実験(これが俗にいうCPU実験)とコンパイラ実験に分かれています。
+					プロセッサ実験では、4人で1班組むのですが、それぞれコア係、コンパイラ係、FPU係、シミュレータ係を担当し、先に自分がどの係になりたいかを決めた上で、名前順で班振りをします。
+					3Sの関数論理型プログラミング実験でインタプリタを作るのがわりかし楽しかったので、僕はこの時コンパイラ係を選びました。(本当は、シミュレータは高級言語でバリバリ開発していくのがめんどくさくて、なおかつvivadoには二度と触りたくなかったのでコアとFPUも除外という感じで、結局残ったのがコンパイラだったという...)
+				</div>
+				<h3>知能システム</h3>
+				<h3>連続系アルゴリズム</h3>
+				<h3>計算量理論</h3>
+			</div>
+			<div onclick="obj=document.getElementById('4S').style; obj.display=(obj.display=='none')?'block':'none';">
+				<a style="cursor:pointer;"><h2>4S</h2></a>
+			</div>
+			<div id="4S" style="display:none;clear:both;">
+				準備中です。
+			</div>
+			<div onclick="obj=document.getElementById('4A').style; obj.display=(obj.display=='none')?'block':'none';">
+				<a style="cursor:pointer;"><h2>4A</h2></a>
+			</div>
+			<div id="4A" style="display:none;clear:both;">
+				準備中です。
+			</div>
+		</div>
+		<div>
+			<h1>余興</h1>
+			<div onclick="obj=document.getElementById('orbit').style; obj.display=(obj.display=='none')?'block':'none';">
+				<a style="cursor:pointer;">連続系アルゴリズムで作った引力を及ぼしあう2体の軌道</a>
+			</div>
+			<div id="orbit" style="display:none;clear:both;">
+				<link rel="stylesheet"
+				href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/
+				css/font-awesome.min.css">
+				<script language="javascript">
+				  /* Define the Animation class */
+				  function Animation(frames, img_id, slider_id, interval, loop_select_id){
+					this.img_id = img_id;
+					this.slider_id = slider_id;
+					this.loop_select_id = loop_select_id;
+					this.interval = interval;
+					this.current_frame = 0;
+					this.direction = 0;
+					this.timer = null;
+					this.frames = new Array(frames.length);
+
+					for (var i=0; i<frames.length; i++)
+					{
+					 this.frames[i] = new Image();
+					 this.frames[i].src = frames[i];
+					}
+					document.getElementById(this.slider_id).max = this.frames.length - 1;
+					this.set_frame(this.current_frame);
+				  }
+
+				  Animation.prototype.get_loop_state = function(){
+					var button_group = document[this.loop_select_id].state;
+					for (var i = 0; i < button_group.length; i++) {
+						var button = button_group[i];
+						if (button.checked) {
+							return button.value;
+						}
+					}
+					return undefined;
+				  }
+
+				  Animation.prototype.set_frame = function(frame){
+					this.current_frame = frame;
+					document.getElementById(this.img_id).src =
+							this.frames[this.current_frame].src;
+					document.getElementById(this.slider_id).value = this.current_frame;
+				  }
+
+				  Animation.prototype.next_frame = function()
+				  {
+					this.set_frame(Math.min(this.frames.length - 1, this.current_frame + 1));
+				  }
+
+				  Animation.prototype.previous_frame = function()
+				  {
+					this.set_frame(Math.max(0, this.current_frame - 1));
+				  }
+
+				  Animation.prototype.first_frame = function()
+				  {
+					this.set_frame(0);
+				  }
+
+				  Animation.prototype.last_frame = function()
+				  {
+					this.set_frame(this.frames.length - 1);
+				  }
+
+				  Animation.prototype.slower = function()
+				  {
+					this.interval /= 0.7;
+					if(this.direction > 0){this.play_animation();}
+					else if(this.direction < 0){this.reverse_animation();}
+				  }
+
+				  Animation.prototype.faster = function()
+				  {
+					this.interval *= 0.7;
+					if(this.direction > 0){this.play_animation();}
+					else if(this.direction < 0){this.reverse_animation();}
+				  }
+
+				  Animation.prototype.anim_step_forward = function()
+				  {
+					this.current_frame += 1;
+					if(this.current_frame < this.frames.length){
+					  this.set_frame(this.current_frame);
+					}else{
+					  var loop_state = this.get_loop_state();
+					  if(loop_state == "loop"){
+						this.first_frame();
+					  }else if(loop_state == "reflect"){
+						this.last_frame();
+						this.reverse_animation();
+					  }else{
+						this.pause_animation();
+						this.last_frame();
+					  }
+					}
+				  }
+
+				  Animation.prototype.anim_step_reverse = function()
+				  {
+					this.current_frame -= 1;
+					if(this.current_frame >= 0){
+					  this.set_frame(this.current_frame);
+					}else{
+					  var loop_state = this.get_loop_state();
+					  if(loop_state == "loop"){
+						this.last_frame();
+					  }else if(loop_state == "reflect"){
+						this.first_frame();
+						this.play_animation();
+					  }else{
+						this.pause_animation();
+						this.first_frame();
+					  }
+					}
+				  }
+
+				  Animation.prototype.pause_animation = function()
+				  {
+					this.direction = 0;
+					if (this.timer){
+					  clearInterval(this.timer);
+					  this.timer = null;
+					}
+				  }
+
+				  Animation.prototype.play_animation = function()
+				  {
+					this.pause_animation();
+					this.direction = 1;
+					var t = this;
+					if (!this.timer) this.timer = setInterval(function() {
+						t.anim_step_forward();
+					}, this.interval);
+				  }
+
+				  Animation.prototype.reverse_animation = function()
+				  {
+					this.pause_animation();
+					this.direction = -1;
+					var t = this;
+					if (!this.timer) this.timer = setInterval(function() {
+						t.anim_step_reverse();
+					}, this.interval);
+				  }
+				</script>
+
+				<div class="animation" align="center">
+					<img id="_anim_imgef605d8d863940fd8d7b73eb7505201a">
+					<br>
+					<input id="_anim_slideref605d8d863940fd8d7b73eb7505201a" type="range" style="width:350px"
+						   name="points" min="0" max="1" step="1" value="0"
+						   onchange="animef605d8d863940fd8d7b73eb7505201a.set_frame(parseInt(this.value));"></input>
+					<br>
+					<button onclick="animef605d8d863940fd8d7b73eb7505201a.slower()"><i class="fa fa-minus"></i></button>
+					<button onclick="animef605d8d863940fd8d7b73eb7505201a.first_frame()"><i class="fa fa-fast-backward">
+						</i></button>
+					<button onclick="animef605d8d863940fd8d7b73eb7505201a.previous_frame()">
+						<i class="fa fa-step-backward"></i></button>
+					<button onclick="animef605d8d863940fd8d7b73eb7505201a.reverse_animation()">
+						<i class="fa fa-play fa-flip-horizontal"></i></button>
+					<button onclick="animef605d8d863940fd8d7b73eb7505201a.pause_animation()"><i class="fa fa-pause">
+						</i></button>
+					<button onclick="animef605d8d863940fd8d7b73eb7505201a.play_animation()"><i class="fa fa-play"></i>
+						</button>
+					<button onclick="animef605d8d863940fd8d7b73eb7505201a.next_frame()"><i class="fa fa-step-forward">
+						</i></button>
+					<button onclick="animef605d8d863940fd8d7b73eb7505201a.last_frame()"><i class="fa fa-fast-forward">
+						</i></button>
+					<button onclick="animef605d8d863940fd8d7b73eb7505201a.faster()"><i class="fa fa-plus"></i></button>
+				  <form action="#n" name="_anim_loop_selectef605d8d863940fd8d7b73eb7505201a" class="anim_control">
+					<input type="radio" name="state"
+						   value="once" > Once </input>
+					<input type="radio" name="state"
+						   value="loop" checked> Loop </input>
+					<input type="radio" name="state"
+						   value="reflect" > Reflect </input>
+				  </form>
+				</div>
 
 
-			<script language="javascript">
-			  /* Instantiate the Animation class. */
-			  /* The IDs given should match those used in the template above. */
-			  (function() {
-				var img_id = "_anim_imgef605d8d863940fd8d7b73eb7505201a";
-				var slider_id = "_anim_slideref605d8d863940fd8d7b73eb7505201a";
-				var loop_select_id = "_anim_loop_selectef605d8d863940fd8d7b73eb7505201a";
-				var frames = new Array(1000);
-				
-			  for (var i=0; i<1000; i++){
-				frames[i] = "outpu_frames/frame" + ("0000000" + i).slice(-7) +
-							".png";
-			  }
+				<script language="javascript">
+				  /* Instantiate the Animation class. */
+				  /* The IDs given should match those used in the template above. */
+				  (function() {
+					var img_id = "_anim_imgef605d8d863940fd8d7b73eb7505201a";
+					var slider_id = "_anim_slideref605d8d863940fd8d7b73eb7505201a";
+					var loop_select_id = "_anim_loop_selectef605d8d863940fd8d7b73eb7505201a";
+					var frames = new Array(1000);
+					
+				  for (var i=0; i<1000; i++){
+					frames[i] = "outpu_frames/frame" + ("0000000" + i).slice(-7) +
+								".png";
+				  }
 
 
-				/* set a timeout to make sure all the above elements are created before
-				   the object is initialized. */
-				setTimeout(function() {
-					animef605d8d863940fd8d7b73eb7505201a = new Animation(frames, img_id, slider_id, 10.0,
-											 loop_select_id);
-				}, 0);
-			  })()
-			</script>
+					/* set a timeout to make sure all the above elements are created before
+					   the object is initialized. */
+					setTimeout(function() {
+						animef605d8d863940fd8d7b73eb7505201a = new Animation(frames, img_id, slider_id, 10.0,
+												 loop_select_id);
+					}, 0);
+				  })()
+				</script>
+			</div>
 		</div>
 	</body>
 </html>
