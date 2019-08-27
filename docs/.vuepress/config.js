@@ -29,6 +29,6 @@ module.exports = {
 			]
 		}
 	},
-	base: '/bobo1997.github.io/',
+	base: '/bobo1997.github.io/public',
 	dest: 'public'
 }
